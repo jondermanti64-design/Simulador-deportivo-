@@ -1,1 +1,91 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J-Stad Pro Match Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>J-Stad Pro Match Simulator</h1>
+        <p class="subtitle">Simulador avanzado con cruce de xG Ofensivo/Defensivo y Córners Concedidos.</p>
+
+        <div class="teams-input">
+            <!-- Equipo Local -->
+            <div class="card">
+                <h2>Equipo Local</h2>
+                <label>Nombre:</label>
+                <input type="text" id="home-name" value="Local FC">
+                <label>xG a Favor (Ofensivo):</label>
+                <input type="number" id="home-xg" step="0.05" value="1.65">
+                <label>xG en Contra (Defensivo):</label>
+                <input type="number" id="home-xga" step="0.05" value="1.00">
+                <label>Remates Totales:</label>
+                <input type="number" id="home-shots" value="15">
+                <label>Remates a Puerta:</label>
+                <input type="number" id="home-sot" value="6">
+                <label>Córners a Favor:</label>
+                <input type="number" id="home-corners" value="6">
+                <label>Córners en Contra:</label>
+                <input type="number" id="home-corners-conceded" value="4">
+                <label>Posesión Promedio (%):</label>
+                <input type="number" id="home-poss" value="55">
+                <label>% Victorias Local:</label>
+                <input type="number" id="home-winrate" value="65">
+            </div>
+
+            <!-- Equipo Visitante -->
+            <div class="card">
+                <h2>Equipo Visitante</h2>
+                <label>Nombre:</label>
+                <input type="text" id="away-name" value="Visita CF">
+                <label>xG a Favor (Ofensivo):</label>
+                <input type="number" id="away-xg" step="0.05" value="1.10">
+                <label>xG en Contra (Defensivo):</label>
+                <input type="number" id="away-xga" step="0.05" value="1.40">
+                <label>Remates Totales:</label>
+                <input type="number" id="away-shots" value="11">
+                <label>Remates a Puerta:</label>
+                <input type="number" id="away-sot" value="4">
+                <label>Córners a Favor:</label>
+                <input type="number" id="away-corners" value="4">
+                <label>Córners en Contra:</label>
+                <input type="number" id="away-corners-conceded" value="5">
+                <label>Posesión Promedio (%):</label>
+                <input type="number" id="away-poss" value="45">
+                <label>% Victorias Visitante:</label>
+                <input type="number" id="away-winrate" value="30">
+            </div>
+        </div>
+
+        <button id="simulate-btn" onclick="runSimulation()">Simular Partido Avanzado</button>
+
+        <!-- Resultados Finales -->
+        <div id="results" class="results-container hidden">
+            <h2>Resultado Final del Partido</h2>
+            <div class="scoreboard">
+                <span id="res-home-name">Local</span> 
+                <strong id="res-score">0 - 0</strong> 
+                <span id="res-away-name">Visita</span>
+            </div>
+            
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>Estadística</th>
+                        <th id="th-home">Local</th>
+                        <th id="th-away">Visita</th>
+                    </tr>
+                </thead>
+                <tbody id="stats-body">
+                    <!-- Inyección dinámica de estadísticas -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
